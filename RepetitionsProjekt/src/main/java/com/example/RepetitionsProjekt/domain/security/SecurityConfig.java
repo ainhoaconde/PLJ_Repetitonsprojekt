@@ -14,13 +14,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity @RequiredArgsConstructor @EnableGlobalMethodSecurity(prePostEnabled = true)
 
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    private final PasswordEncoder passwordEncoder;
+     final PasswordEncoder passwordEncoder;
     private final UserDetailsService userDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
-        //  auth.inMemoryAuthentication().withUser("ainhoa").password("password").roles("DEFAULT").authorities("TEST");
+         auth.inMemoryAuthentication().withUser("ainhoa").password("password").roles("DEFAULT").authorities("TEST");
 
     }
 
@@ -34,8 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().httpBasic().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                .antMatchers("/magazine/**").hasAnyRole("ADMIN")
-                .antMatchers("/magazine/user").hasAnyRole("USER")
+                .antMatchers("/shoes/**").hasAnyRole("ADMIN")
+                .antMatchers("/shoes/user").hasAnyRole("USER")
                 .and().formLogin();
     }
 }
