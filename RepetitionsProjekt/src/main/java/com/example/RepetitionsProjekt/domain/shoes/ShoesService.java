@@ -37,10 +37,10 @@ public class ShoesService {
     public Shoes updateShoes(Integer shoesId, Shoes newShoes) {
         return shoesRepository.findById(shoesId).map(
                 shoes -> {
+                    shoes.setPrice(newShoes.getPrice());
                     shoes.setName(newShoes.getName());
                     shoes.setBrand(newShoes.getBrand());
                     shoes.setColor(newShoes.getColor());
-                    shoes.setPrice(newShoes.getPrice());
                     shoes.setSize(newShoes.getSize());
                     return shoesRepository.save(shoes);
                 }).orElseGet(() -> {
@@ -48,5 +48,9 @@ public class ShoesService {
             return shoesRepository.save(newShoes);
         });
     }
+    public void deleteShoes(Integer shoesId) throws NoSuchElementException{
+        shoesRepository.deleteById(shoesId);
+    }
+
 }
 

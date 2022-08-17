@@ -14,9 +14,9 @@ public class Shoes {
     @Id
     @GeneratedValue
     private int shoesId;
-
-    private int price ;
     @Min(value=0,message = "    value must be positive")
+    private double price ;
+
     private String name;
     @Size(min = 0, max = 70, message = "value can have a maximum of 70 characters")
     private String brand;
