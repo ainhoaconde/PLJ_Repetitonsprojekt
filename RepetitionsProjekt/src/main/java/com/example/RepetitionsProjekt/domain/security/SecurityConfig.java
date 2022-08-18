@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
 
 @EnableWebSecurity @RequiredArgsConstructor @EnableGlobalMethodSecurity(prePostEnabled = true)
 
@@ -20,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
-         auth.inMemoryAuthentication().withUser("ainhoa").password("password").roles("DEFAULT").authorities("TEST");
+         auth.inMemoryAuthentication().withUser("ainhoa").password("password").roles("ADMIN").authorities("TEST");
 
     }
 
@@ -32,8 +33,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.cors().configurationSource(source -> new CorsConfiguration().applyPermitDefaultValues());
         http.csrf().disable().httpBasic().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
+                .antMatchers("/shoes").permitAll()
                 .antMatchers("/shoes/**").hasAnyRole("ADMIN")
                 .antMatchers("/shoes/user").hasAnyRole("USER")
                 .and().formLogin();
