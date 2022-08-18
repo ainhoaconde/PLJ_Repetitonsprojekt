@@ -1,14 +1,15 @@
 import { defaultAxiosInstance } from "../../Api";
 
-type Movie = {
+type Shoe = {
   shoesId: string;
-  movieName: string;
-  movieGenre: string;
-  moviePrice: number;
+  price: number;
+  name: string;
+  brand: string;
+  color: string;
+  size: string;
 };
-export default async function getMovie() {
-  console.log(defaultAxiosInstance.get("movies/"), "ksjhdsdgfs");
-  const data = await defaultAxiosInstance.get("movies/").catch((error) =>{throw error})
+export default async function getShoe() {
+   const data = await defaultAxiosInstance.get("shoes/", {auth:{username:'ainhoa', password:'Ronaldo'}}).catch((error) =>{throw error})
   console.log("after fetch");
   console.log(data);
   return data["data"];

@@ -1,11 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App1.css';
+import ShoeCard1 from './Frontend/molecules/ShoeCard';
 
 function App() {
   return (
-    <div className="App">
-  
+    <div >
+     <ShoeCard1></ShoeCard1>
     </div>
   );
 }

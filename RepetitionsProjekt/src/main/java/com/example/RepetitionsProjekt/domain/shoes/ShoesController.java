@@ -14,6 +14,7 @@ import java.util.NoSuchElementException;
 @AllArgsConstructor
 @RestController
 @Log4j2
+@CrossOrigin()
 @RequestMapping("/shoes")
 public class ShoesController {
 
@@ -26,7 +27,6 @@ public class ShoesController {
         log.info("only the shoes with the corresponding id is listed");
         return ResponseEntity.ok().body(shoesService.getSpecificShoes(shoesId));
     }
-
 
     @GetMapping
     public ResponseEntity<List<Shoes>> getAllShoes() {
