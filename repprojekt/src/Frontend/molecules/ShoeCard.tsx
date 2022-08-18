@@ -13,7 +13,6 @@ type Shoe = {
 export default function ShoeCard1() {
   const [shoeN, setShoeName] = useState<Shoe[]>([]);
   useEffect(() => {
-    console.log("oeksakdgfj");
     getShoe()
       .then((response) => setShoeName(response))
       .catch((error) => console.log(error));
@@ -21,7 +20,7 @@ export default function ShoeCard1() {
 
   const imageStyle = {
     height: "15vw",
-    width: "18vw",
+    width: "50%",
   };
   const cardStyle = {
     backgroundColor: '#C6E2FF',
