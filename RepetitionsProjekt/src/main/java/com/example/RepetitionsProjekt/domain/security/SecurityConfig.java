@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors().configurationSource(source -> new CorsConfiguration().applyPermitDefaultValues());
+        http.cors().configurationSource(source -> new CorsConfiguration().applyPermitDefaultValues()    );
         http.csrf().disable().httpBasic().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
                 .antMatchers("/shoes").permitAll()
