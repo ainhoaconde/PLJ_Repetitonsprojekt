@@ -10,7 +10,7 @@ type Shoe = {
     color: string;
     size: string;
   };
-export default function ShoeCard1() {
+export default function ShoeCard() {
   const [shoeN, setShoeName] = useState<Shoe[]>([]);
   useEffect(() => {
     getShoe()
