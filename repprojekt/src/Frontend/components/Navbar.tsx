@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import EmojiNatureTwoToneIcon from '@mui/icons-material/EmojiNatureTwoTone';
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 const pages = ['Products', 'About us'];
 const settings = ['Login',  'regrister'];
@@ -34,6 +35,8 @@ const Navbar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  
+  const navigate = useNavigate();
 
   return (
     <AppBar position="static">
