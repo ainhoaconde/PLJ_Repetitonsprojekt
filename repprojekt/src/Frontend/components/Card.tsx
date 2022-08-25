@@ -5,9 +5,8 @@ import Button from '@mui/joy/Button';
 import Card from '@mui/joy/Card';
 import IconButton from '@mui/joy/IconButton';
 import Typography from '@mui/joy/Typography';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import Badge from '@mui/joy/Badge';
-import Checkbox from '@mui/joy/Checkbox';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import Badge from '@mui/joy/Badge'
 import Add from '@mui/icons-material/Add';
 import Remove from '@mui/icons-material/Remove';
 
@@ -25,7 +24,6 @@ export default function ShoesCard() {
     width: "30vw",
   };
   const [count, setCount] = React.useState(0);
-  const [showZero, setShowZero] = React.useState(false);
 
   return (
     <Card style={cardStyle}>
@@ -38,9 +36,9 @@ export default function ShoesCard() {
       </AspectRatio>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
         <Typography level="h2" fontSize="md" sx={{ alignSelf: 'flex-start' }}>
-          Yosemite National Park
+          Name : Tns
         </Typography>
-        <Typography level="body2">April 24 to May 02, 2021</Typography>
+        <Typography level="body2">Brand: nike</Typography>
       </Box>
       <IconButton
         aria-label="bookmark Bahamas Islands"
@@ -49,15 +47,12 @@ export default function ShoesCard() {
         size="sm"
         sx={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }}
       >
-        <AddShoppingCartIcon />
+        <FavoriteBorderIcon />
       </IconButton>
 
       <Box sx={{ display: 'flex' }}>
         <div>
-          <Typography level="body3">price:</Typography>
-          <Typography fontSize="lg" fontWeight="lg" >
-            $2900
-          </Typography>
+          <Typography level="body3">price: 240</Typography>
         </div>
         <Button
           variant="solid"
@@ -92,9 +87,6 @@ export default function ShoesCard() {
         >
           <Remove />
         </IconButton>
-        <Typography fontWeight="md" textColor="text.secondary">
-          {count}
-        </Typography>
         <IconButton
           size="sm"
           variant="outlined"
