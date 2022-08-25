@@ -7,6 +7,7 @@ type Shoe = {
   name: string;
   brand: string;
   color: string;
+  imgsrc: string;
   size: string;
 };
 export default async function getShoe() {

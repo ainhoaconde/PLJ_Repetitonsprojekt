@@ -1,31 +1,52 @@
-import * as React from 'react';
+
+import React, { Component, useEffect, useState } from "react";
 import AspectRatio from '@mui/joy/AspectRatio';
 import Box from '@mui/joy/Box';
 import Button from '@mui/joy/Button';
 import Card from '@mui/joy/Card';
 import IconButton from '@mui/joy/IconButton';
-import Typography from '@mui/joy/Typography';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Badge from '@mui/joy/Badge'
 import Add from '@mui/icons-material/Add';
 import Remove from '@mui/icons-material/Remove';
+import getShoe from '../service/ShoesService';
+import Typography from "@mui/material/Typography/Typography";
+
+type Shoe = {
+  shoesId: string;
+  price: number;
+  name: string;
+  brand: string;
+  color: string;
+  size: string;
+};
 
 export default function ShoesCard() {
-    
-
+  const [shoeN, setShoeName] = useState<Shoe[]>([]);
+  useEffect(() => {
+    getShoe()
+      .then((response) => setShoeName(response))
+      .catch((error) => console.log(error));
+  }, []);
+  
   const imageStyle = {
     height: "16vw",
-    width: "70%",
+    width: "90%",
   };
   const cardStyle = {
     backgroundColor: '#C6E2FF',
-    display: "block",
-    height: "30vw",
-    width: "30vw",
+    display: "flex",
+    height: "35vw",
+    width: "20vw",
   };
   const [count, setCount] = React.useState(0);
 
   return (
+    
+    <div>
+       {shoeN.map((shoe: Shoe) => {
+         return (
+          <div style={{float:'left'}}>
     <Card style={cardStyle}>
         
       <AspectRatio style={imageStyle}>
@@ -35,10 +56,6 @@ export default function ShoesCard() {
         />
       </AspectRatio>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
-        <Typography level="h2" fontSize="md" sx={{ alignSelf: 'flex-start' }}>
-          Name : Tns
-        </Typography>
-        <Typography level="body2">Brand: nike</Typography>
       </Box>
       <IconButton
         aria-label="bookmark Bahamas Islands"
@@ -52,7 +69,11 @@ export default function ShoesCard() {
 
       <Box sx={{ display: 'flex' }}>
         <div>
-          <Typography level="body3">price: 240</Typography>
+        <p>Name: {shoe.name}</p>
+        <p>Price: {shoe.price} CHF</p>
+        <p>Brand: {shoe.brand}</p>
+        <p>Color: {shoe.color}</p>
+        <p>Size:{shoe.size} </p>
         </div>
         <Button
           variant="solid"
@@ -97,5 +118,9 @@ export default function ShoesCard() {
       </Box>
     </Box>
     </Card>
+      </div>
+      );
+    })}
+    </div>
   );
-}
+} 
